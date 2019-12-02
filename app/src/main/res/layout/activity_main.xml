@@ -83,7 +83,7 @@ app:layout_constraintTop_toTopOf="parent">
         android:textAlignment="viewStart"
         android:textColor="#25227E"
         android:textStyle="bold" />
-    
+
 
     <TextView
         android:layout_width="match_parent"
@@ -91,10 +91,12 @@ app:layout_constraintTop_toTopOf="parent">
         android:text="Gender"
         android:textStyle="bold" />
 
+
     <RadioGroup
         android:id="@+id/rgGender"
         android:layout_width="match_parent"
         android:layout_height="95dp">
+
 
         <RadioButton
             android:id="@+id/rbMale"
@@ -102,11 +104,13 @@ app:layout_constraintTop_toTopOf="parent">
             android:layout_height="34dp"
             android:text="Male" />
 
+
         <RadioButton
             android:id="@+id/rbFemale"
             android:layout_width="match_parent"
             android:layout_height="27dp"
             android:text="Female" />
+
 
         <RadioButton
             android:id="@+id/rbOthers"
@@ -114,6 +118,7 @@ app:layout_constraintTop_toTopOf="parent">
             android:layout_height="36dp"
             android:text="Others" />
     </RadioGroup>
+
 
     <EditText
         android:id="@+id/txtAge"
@@ -123,6 +128,7 @@ app:layout_constraintTop_toTopOf="parent">
         android:inputType="number"
         android:textStyle="bold" />
 
+
     <TextView
         android:id="@+id/txtFillingDate"
         android:layout_width="match_parent"
@@ -130,6 +136,7 @@ app:layout_constraintTop_toTopOf="parent">
         android:hint="TaxFillingDate"
         android:inputType="date"
         android:textStyle="bold" />
+
 
 
     <EditText
@@ -141,6 +148,7 @@ app:layout_constraintTop_toTopOf="parent">
         android:textStyle="bold" />
 
 
+
     <EditText
         android:id="@+id/edGrossIncome"
         android:layout_width="match_parent"
@@ -150,11 +158,13 @@ app:layout_constraintTop_toTopOf="parent">
         android:inputType="number"
         android:textStyle="bold" />
 
+
     <Button
         android:id="@+id/btnCalculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Calculate" />
+    
 
 </LinearLayout>
 </ScrollView>
