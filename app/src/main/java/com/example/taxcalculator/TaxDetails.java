@@ -52,6 +52,7 @@ public class TaxDetails extends AppCompatActivity {
         txtTaxableIncome = findViewById(R.id.txtCalTotalTaxableIncome);
         txtTaxPaid = findViewById(R.id.txtCalTotalTaxPaid);
 
+        backButton();
         
     }
 }
