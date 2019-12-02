@@ -119,7 +119,7 @@
                 android:hint="ProvincialTax"
                 android:inputType="numberDecimal"
                 android:textStyle="bold" />
-            
+
 
             <TextView
                 android:id="@+id/txtCalCPP"
@@ -146,6 +146,7 @@
                 android:inputType="numberDecimal"
                 android:textStyle="bold" />
 
+
             <TextView
                 android:id="@+id/txtCalCarryForwardRRSP"
                 android:layout_width="match_parent"
@@ -153,6 +154,7 @@
                 android:hint="Carry forward RRSP"
                 android:inputType="numberDecimal"
                 android:textStyle="bold" />
+            
 
             <TextView
                 android:id="@+id/txtCalTotalTaxableIncome"
