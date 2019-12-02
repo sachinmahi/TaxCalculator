@@ -173,8 +173,9 @@
                 android:hint="Total Tax Paid"
                 android:inputType="numberDecimal"
                 android:textStyle="bold" />
-
             
+
+
         </LinearLayout>
     </ScrollView>
 
