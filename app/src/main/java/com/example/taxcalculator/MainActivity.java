@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         private RadioGroup rgGender;
         private RadioButton rbMale;
         private RadioButton rbFemale;
-        private RadioButton rbOthers;
+        private RadioButton rbOthers, radioGender;
         String radio = "";
         private TextView txtDateOfBirth;
         DatePickerDialog datePickerDialog;
@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         private TextView taxFilling;
         private TextView rrspMain;
         private  EditText grossIncome;
+        private String choosingGender = "";
+        private TextView mainGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +60,9 @@ public class MainActivity extends AppCompatActivity {
         taxFilling = findViewById(R.id.txtFillingDate);
         rrspMain = findViewById(R.id.txtRRSPContributed);
         grossIncome = findViewById(R.id.edGrossIncome);
+        rgGender = findViewById(R.id.rgGender);
 
-        radioAction();
+        //radioAction();
         calculateAll();
 
 
@@ -110,6 +113,20 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+
+        rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if(checkedId == R.id.rbMale){
+                    choosingGender = rbMale.getText().toString();
+                }else if(checkedId == R.id.rbFemale){
+                    choosingGender = rbFemale.getText().toString();
+                }else {
+                    choosingGender = rbOthers.getText().toString();
+                }
+            }
+        });
+
         taxFilling.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -125,38 +142,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void radioAction()
-    {
-        rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId)
-            {
-
-                if(checkedId==R.id.rbMale)
-                {
-                    radio = rbMale.getText().toString();
-                    Toast.makeText(getApplicationContext(),"Male",Toast.LENGTH_SHORT).show();
-                    rbMale.setSelected(true);
-                }
-                else if(checkedId==R.id.rbFemale)
-                {
-
-                    radio = rbFemale.getText().toString();
-                    Toast.makeText(getApplicationContext(),"Female",Toast.LENGTH_SHORT).show();
-                    rbFemale.setSelected(true);
-                    //rbFMale.setText("Female!");
-                }
-                else if(checkedId==R.id.rbOthers)
-                {
-
-                    radio = rbOthers.getText().toString();
-                    Toast.makeText(getApplicationContext(),"Others",Toast.LENGTH_SHORT).show();
-                    rbOthers.setSelected(true);
-                    // rbOthers.setText("Others!");
-                }
-            }
-        });
-    }
+//    public void radioAction()
+//    {
+//        rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId)
+//            {
+//
+//                if(checkedId==R.id.rbMale)
+//                {
+//                    radio = rbMale.getText().toString();
+//                    Toast.makeText(getApplicationContext(),"Male",Toast.LENGTH_SHORT).show();
+//                    rbMale.setSelected(true);
+//                }
+//                else if(checkedId==R.id.rbFemale)
+//                {
+//
+//                    radio = rbFemale.getText().toString();
+//                    Toast.makeText(getApplicationContext(),"Female",Toast.LENGTH_SHORT).show();
+//                    rbFemale.setSelected(true);
+//                    //rbFMale.setText("Female!");
+//                }
+//                else if(checkedId==R.id.rbOthers)
+//                {
+//
+//                    radio = rbOthers.getText().toString();
+//                    Toast.makeText(getApplicationContext(),"Others",Toast.LENGTH_SHORT).show();
+//                    rbOthers.setSelected(true);
+//                    // rbOthers.setText("Others!");
+//                }
+//            }
+//        });
+//    }
     public void calculateAll()
     {
 
@@ -169,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                         Integer.parseInt(mainAge.getText().toString()),
                         fnm.getText().toString(),
                         lnm.getText().toString(),
-                        rgGender.toString(),
+                        choosingGender,
                         txtDateOfBirth.getText().toString(),
                         taxFilling.getText().toString(),
                         Double.parseDouble(grossIncome.getText().toString()),
@@ -186,12 +203,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void dateFormat() {
-        String myFormat = "dd-MMM-yyyy"; //In which you need put here
+        String myFormat = "dd-MMM-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         txtDateOfBirth.setText(sdf.format(calendar.getTime()));
     }
     private void dateFormatTax() {
-        String myFormat = "dd-MMM-yyyy"; //In which you need put here
+        String myFormat = "dd-MMM-yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         taxFilling.setText(sdf.format(calendarTax.getTime()));
     }
