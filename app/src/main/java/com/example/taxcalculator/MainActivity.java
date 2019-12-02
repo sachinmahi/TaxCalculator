@@ -38,5 +38,20 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        btnCalculate = findViewById(R.id.btnCalculate);
+        fnm = findViewById(R.id.txtFirstName);
+        edSIN = findViewById(R.id.edSinNumber);
+        lnm = findViewById(R.id.txtLastName);
+        mainAge = findViewById(R.id.txtAge);
+        rgGender = findViewById(R.id.rgGender);
+        rbMale = findViewById(R.id.rbMale);
+        rbFemale = findViewById(R.id.rbFemale);
+        rbOthers = findViewById(R.id.rbOthers);
+        txtDateOfBirth = findViewById(R.id.txtDOB);
+        taxFilling = findViewById(R.id.txtFillingDate);
+        rrspMain = findViewById(R.id.txtRRSPContributed);
+        grossIncome = findViewById(R.id.edGrossIncome);
+
     }
 }
