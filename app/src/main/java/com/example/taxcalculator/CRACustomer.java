@@ -4,6 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class CRACustomer implements Parcelable
+
+
 {
     Integer sinNumber;
     Integer age;
@@ -23,7 +25,9 @@ public class CRACustomer implements Parcelable
         this.gender = gender;
     }
 
-    public String getDateOfBirth() {
+    public String getDateOfBirth()
+
+    {
         return dateOfBirth;
     }
 
