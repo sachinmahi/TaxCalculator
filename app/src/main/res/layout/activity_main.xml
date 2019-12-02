@@ -33,7 +33,7 @@ app:layout_constraintTop_toTopOf="parent">
         android:inputType="textPersonName"
         android:text="Ontario Income tax calculator"
         android:textAlignment="center"
-        android:textColor="#2B2DDA"
+        android:textColor="#E41212"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +81,7 @@ app:layout_constraintTop_toTopOf="parent">
         android:layout_marginTop="8dp"
         android:text="Select Date of Birth"
         android:textAlignment="viewStart"
-        android:textColor="#25227E"
+        android:textColor="#E21616"
         android:textStyle="bold" />
 
 
