@@ -2,6 +2,7 @@ package com.example.taxcalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -53,6 +54,22 @@ public class TaxDetails extends AppCompatActivity {
         txtTaxPaid = findViewById(R.id.txtCalTotalTaxPaid);
 
         backButton();
+
+        Intent intent = getIntent();
+        calCRA = intent.getParcelableExtra("CRACustomer");
+
+
+        calSIN.setText("SIN: " + calCRA.getSinNumber());
+        calculatedfullName.setText("FullName: " + calCRA.getFullName());
+        calAge.setText("Age: " + calCRA.getAge());
+        calGender.setText("Gender: " + calCRA.getGender());
+        calDOB.setText("DOB: " + calCRA.getDateOfBirth());
+        calTaxFillingDate.setText("TaxFillingDate: "+ calCRA.getTaxFillingDate());
+
+        txtDgrossIncome.setText(" GROSS INCOME: \t" + calCRA.getGrossIncome());
+        txtRRSPContribution.setText("RRSP Contributed: \t" + calCRA.getRrspContri());
+        performLogic();
+
         
     }
 }
