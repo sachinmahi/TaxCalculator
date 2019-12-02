@@ -48,7 +48,7 @@ public class CRACustomer implements Parcelable
         this.rrspContri = rrspContri;
 
     }
-    
+
 
     public double getGrossIncome() {
         return grossIncome;
@@ -94,7 +94,8 @@ public class CRACustomer implements Parcelable
         return rrspCarryForward;
     }
 
-    public void setRrspCarryForward(double rrspCarryForward) {
+    public void setRrspCarryForward(double rrspCarryForward)
+    {
         this.rrspCarryForward = rrspCarryForward;
     }
 
@@ -114,10 +115,7 @@ public class CRACustomer implements Parcelable
         this.taxPaid = taxPaid;
     }
 
-    //    public CRACustomer(String fullName)
-//    {
-//       this.fullName = fullName;
-//    }
+
 
     public static final Parcelable.Creator<CRACustomer> CREATOR = new Parcelable.Creator<CRACustomer>() {
         @Override
@@ -163,8 +161,9 @@ public class CRACustomer implements Parcelable
         this.age = age;
     }
 
-    public String getFullName() {
-        //return lName.toUpperCase() + " , " + fName;
+    public String getFullName()
+    {
+
         return lName.toUpperCase() + ", " +
                 fName.substring(0,1).toUpperCase() + fName.substring(1);
     }
