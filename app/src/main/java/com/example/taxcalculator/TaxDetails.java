@@ -150,6 +150,38 @@ public class TaxDetails extends AppCompatActivity {
         return cpp;
     }
 
-    
+    public double calcFedralTax() {
+        //calculate federal tax
+        double temp = taxableIncome;
+        if (taxableIncome < 12069.00) {
+            federalTax = 0;
+            temp = taxableIncome - 12069.00;
+        } else if (temp < 47630.00) {
+            federalTax = (temp * 0.15);
+            temp = temp - federalTax;
+        } else if (temp < 95259.00) {
+            federalTax = (temp * 0.205); //20.50%
+            temp = temp - federalTax;
+        } else if (temp < 147667.00) {
+            federalTax = (temp * 0.26); //26%
+            temp = temp - federalTax;
+        } else if (temp < 210371.00) {
+            federalTax = (temp * 0.29);//29%
+            temp = temp - federalTax;
+        } else {
+            federalTax = (temp * 0.33);//33%
+            temp = temp - federalTax;
+        }
+        return federalTax;
+    }
+    public  double calcProvincialTax(){
+        //calculate provincial tax
+        return provincialTax;
+    }
+    public  double calTaxPaid()
+    {
+        return totalTaxPaid;
+    }
+
 
 }
