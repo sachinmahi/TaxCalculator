@@ -3,7 +3,8 @@ package com.example.taxcalculator;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class CRACustomer {
+public class CRACustomer implements Parcelable
+{
     Integer sinNumber;
     Integer age;
     String fName,lName;
