@@ -140,4 +140,16 @@ public class TaxDetails extends AppCompatActivity {
         txtTaxPaid.setText("Total tax Paid:\t" + taxpaid);
     }
 
+    public double calcCpp(){
+        // calculate  cpp
+        if(calCRA.getGrossIncome() > 57000.00){
+            cpp = (57000.00 * (5.10 / 100));
+        } else {
+            cpp = (calCRA.getGrossIncome() * (5.10 / 100));
+        }
+        return cpp;
+    }
+
+    
+
 }
