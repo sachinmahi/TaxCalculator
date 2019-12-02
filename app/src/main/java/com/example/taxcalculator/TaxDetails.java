@@ -1,5 +1,6 @@
 package com.example.taxcalculator;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -70,6 +71,16 @@ public class TaxDetails extends AppCompatActivity {
         txtRRSPContribution.setText("RRSP Contributed: \t" + calCRA.getRrspContri());
         performLogic();
 
-        
+
     }
+    public void backButton()
+    {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    
+
 }
