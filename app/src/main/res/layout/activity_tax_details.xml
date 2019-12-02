@@ -33,7 +33,7 @@
                 android:inputType="textPersonName"
                 android:text="Ontario's Income tax calculator"
                 android:textAlignment="center"
-                android:textColor="#1A71DB"
+                android:textColor="#F7071C"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
