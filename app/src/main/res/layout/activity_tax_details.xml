@@ -163,7 +163,7 @@
                 android:hint="Total Taxable Income"
                 android:inputType="numberDecimal"
                 android:textStyle="bold" />
-            
+
 
             <TextView
                 android:id="@+id/txtCalTotalTaxPaid"

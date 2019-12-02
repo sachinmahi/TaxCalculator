@@ -3,6 +3,7 @@ package com.example.taxcalculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,11 +14,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
-    public class MainActivity extends AppCompatActivity {
+
         private Button btnCalculate;
         private EditText edSIN;
         private EditText fnm;
@@ -75,65 +78,121 @@ public class MainActivity extends AppCompatActivity {
                 // DatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
                 // datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                 dateFormat();
-
-              };
+            }
+        };
 
         txtDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                new DatePickerDialog(com.example.taxcalculator.MainActivity.this, date, calendar
+                new DatePickerDialog(MainActivity.this, date, calendar
                         .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)).show();
 //                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-             };
+            }
+        });
 
 
-                taxFilling.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v)
-                    {
-                        new DatePickerDialog(com.example.taxcalculator.MainActivity.this, date1, calendarTax
-                                .get(Calendar.YEAR), calendarTax.get(Calendar.MONTH),
-                                calendarTax.get(Calendar.DAY_OF_MONTH)).show();
 
 
-                    }
-                });
+        final DatePickerDialog.OnDateSetListener date1 = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth)
+            {
 
-                public void radioAction()
-                {
-                    rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(RadioGroup group, int checkedId)
-                        {
+                calendarTax.set(Calendar.YEAR, year);
+                calendarTax.set(Calendar.MONTH, monthOfYear);
+                calendarTax.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                // DatePicker.getDatePicker().setMaxDate(System.currentTimeMillis());
+                // datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                dateFormatTax();
+            }
+        };
 
-                            if(checkedId==R.id.rbMale)
-                            {
-                                radio = rbMale.getText().toString();
-                                Toast.makeText(getApplicationContext(),"Male",Toast.LENGTH_SHORT).show();
-                                rbMale.setSelected(true);
-                            }
-                            else if(checkedId==R.id.rbFemale)
-                            {
+        taxFilling.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                new DatePickerDialog(MainActivity.this, date1, calendarTax
+                        .get(Calendar.YEAR), calendarTax.get(Calendar.MONTH),
+                        calendarTax.get(Calendar.DAY_OF_MONTH)).show();
 
-                                radio = rbFemale.getText().toString();
-                                Toast.makeText(getApplicationContext(),"Female",Toast.LENGTH_SHORT).show();
-                                rbFemale.setSelected(true);
-                                //rbFMale.setText("Female!");
-                            }
-                            else if(checkedId==R.id.rbOthers)
-                            {
-
-                                radio = rbOthers.getText().toString();
-                                Toast.makeText(getApplicationContext(),"Others",Toast.LENGTH_SHORT).show();
-                                rbOthers.setSelected(true);
-                                // rbOthers.setText("Others!");
-                            }
-                        }
-                    });
-                }
 
             }
-        }
+        });
+
+    }
+
+
+    public void radioAction()
+    {
+        rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId)
+            {
+
+                if(checkedId==R.id.rbMale)
+                {
+                    radio = rbMale.getText().toString();
+                    Toast.makeText(getApplicationContext(),"Male",Toast.LENGTH_SHORT).show();
+                    rbMale.setSelected(true);
+                }
+                else if(checkedId==R.id.rbFemale)
+                {
+
+                    radio = rbFemale.getText().toString();
+                    Toast.makeText(getApplicationContext(),"Female",Toast.LENGTH_SHORT).show();
+                    rbFemale.setSelected(true);
+                    //rbFMale.setText("Female!");
+                }
+                else if(checkedId==R.id.rbOthers)
+                {
+
+                    radio = rbOthers.getText().toString();
+                    Toast.makeText(getApplicationContext(),"Others",Toast.LENGTH_SHORT).show();
+                    rbOthers.setSelected(true);
+                    // rbOthers.setText("Others!");
+                }
+            }
+        });
+    }
+    public void calculateAll()
+    {
+
+        btnCalculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+
+                CRACustomer cra = new CRACustomer(Integer.parseInt(edSIN.getText().toString()),
+                        Integer.parseInt(mainAge.getText().toString()),
+                        fnm.getText().toString(),
+                        lnm.getText().toString(),
+                        rgGender.toString(),
+                        txtDateOfBirth.getText().toString(),
+                        taxFilling.getText().toString(),
+                        Double.parseDouble(grossIncome.getText().toString()),
+                        Double.parseDouble(rrspMain.getText().toString()));
+
+                Intent mIntent = new Intent(MainActivity.this, TaxDetails.class);
+                mIntent.putExtra("CRACustomer", cra);
+//                      mIntent.putExtra("gender", radio);
+                startActivity(mIntent);
+
+
+            }
+        });
+    }
+
+    private void dateFormat() {
+        String myFormat = "dd-MMM-yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        txtDateOfBirth.setText(sdf.format(calendar.getTime()));
+    }
+    private void dateFormatTax() {
+        String myFormat = "dd-MMM-yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        taxFilling.setText(sdf.format(calendarTax.getTime()));
+    }
 }
