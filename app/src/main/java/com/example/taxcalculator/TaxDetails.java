@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -90,7 +91,9 @@ public class TaxDetails extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
 
 
 }
