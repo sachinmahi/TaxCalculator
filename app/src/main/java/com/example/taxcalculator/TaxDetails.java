@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 public class TaxDetails extends AppCompatActivity {
 
+    CRACustomer calCRA;
     private TextView calculatedfullName;
     private TextView calSIN;
     private TextView calAge;
