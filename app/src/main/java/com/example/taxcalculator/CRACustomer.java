@@ -95,6 +95,7 @@ public class CRACustomer implements Parcelable
     }
 
     public void setRrspCarryForward(double rrspCarryForward)
+
     {
         this.rrspCarryForward = rrspCarryForward;
     }
@@ -117,7 +118,9 @@ public class CRACustomer implements Parcelable
 
 
 
-    public static final Parcelable.Creator<CRACustomer> CREATOR = new Parcelable.Creator<CRACustomer>() {
+    public static final Parcelable.Creator<CRACustomer> CREATOR = new Parcelable.Creator<CRACustomer>()
+
+    {
         @Override
         public CRACustomer createFromParcel(Parcel in) {
             return new CRACustomer(in);
