@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 //                datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
              };
 
-            
+
                 taxFilling.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v)
@@ -99,6 +100,39 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+
+                public void radioAction()
+                {
+                    rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup group, int checkedId)
+                        {
+
+                            if(checkedId==R.id.rbMale)
+                            {
+                                radio = rbMale.getText().toString();
+                                Toast.makeText(getApplicationContext(),"Male",Toast.LENGTH_SHORT).show();
+                                rbMale.setSelected(true);
+                            }
+                            else if(checkedId==R.id.rbFemale)
+                            {
+
+                                radio = rbFemale.getText().toString();
+                                Toast.makeText(getApplicationContext(),"Female",Toast.LENGTH_SHORT).show();
+                                rbFemale.setSelected(true);
+                                //rbFMale.setText("Female!");
+                            }
+                            else if(checkedId==R.id.rbOthers)
+                            {
+
+                                radio = rbOthers.getText().toString();
+                                Toast.makeText(getApplicationContext(),"Others",Toast.LENGTH_SHORT).show();
+                                rbOthers.setSelected(true);
+                                // rbOthers.setText("Others!");
+                            }
+                        }
+                    });
+                }
 
             }
         }
