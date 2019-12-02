@@ -1,5 +1,8 @@
 package com.example.taxcalculator;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 public class CRACustomer {
     Integer sinNumber;
     Integer age;
@@ -108,4 +111,72 @@ public class CRACustomer {
 //    {
 //       this.fullName = fullName;
 //    }
+
+    public static final Parcelable.Creator<CRACustomer> CREATOR = new Parcelable.Creator<CRACustomer>() {
+        @Override
+        public CRACustomer createFromParcel(Parcel in) {
+            return new CRACustomer(in);
+        }
+
+        @Override
+        public CRACustomer[] newArray(int size) {
+            return new CRACustomer[size];
+        }
+    };
+
+    public String getTaxFillingDate() {
+        return taxFillingDate;
+    }
+
+    public void setTaxFillingDate(String taxFillingDate) {
+        this.taxFillingDate = taxFillingDate;
+    }
+
+    public String getLname() {
+        return lName;
+    }
+
+    public void setLname(String lname) {
+        this.lName = lname;
+    }
+
+    public Integer getSinNumber() {
+        return sinNumber;
+    }
+
+    public void setSinNumber(Integer sinNumber) {
+        this.sinNumber = sinNumber;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getFullName() {
+        //return lName.toUpperCase() + " , " + fName;
+        return lName.toUpperCase() + ", " +
+                fName.substring(0,1).toUpperCase() + fName.substring(1);
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public void setfName(String fName) {
+        this.fName = fName;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
 }
