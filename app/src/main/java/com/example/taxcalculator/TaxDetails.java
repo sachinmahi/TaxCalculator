@@ -175,7 +175,7 @@ public class TaxDetails extends AppCompatActivity {
         return federalTax;
     }
 
-    
+
     public  double calcProvincialTax(){
         //calculate provincial tax
         return provincialTax;
