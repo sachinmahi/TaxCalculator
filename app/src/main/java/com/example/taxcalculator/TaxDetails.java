@@ -95,5 +95,49 @@ public class TaxDetails extends AppCompatActivity {
         return true;
     }
 
+    public void performLogic()
+    {
+
+        // calculate  cpp
+        double grossIncome = calCRA.getGrossIncome();
+        if(grossIncome > 57400.00)
+        {
+            cpp = (57400.00 * 0.051); //5.10%
+        } else
+        {
+            cpp = (grossIncome * 0.051);
+        }
+        txtCPP.setText("CPP Contribution in Year:\t" + cpp);
+        // calculate employement insurance
+        if(grossIncome > 53100){
+            ei = (53100 * 0.0162); //1.62%
+        }else{
+            ei = (grossIncome * (1.62/100));
+        }
+        txtEmpInsurance.setText("Employeement Insurance: \t" + ei);
+        // calculate RRSP
+        rrsp = calCRA.getRrspContri();
+        double maxRRSP = (grossIncome * 0.18); //18%
+        if(rrsp > maxRRSP ){
+            rrspCf = rrsp - maxRRSP;
+            rrsp = maxRRSP;
+        }else{
+            rrsp = rrsp;
+        }
+        txtRRSPCarryForward.setText("RRSP Carry forward: \t"+ rrspCf);
+        //taxable income
+        taxableIncome = grossIncome - (cpp + ei + rrsp);
+        //Toast.makeText(this, "(Double)taxableIncome" + taxableIncome, Toast.LENGTH_SHORT).show();
+        txtTaxableIncome.setText("Taxable income:\t" + (double) taxableIncome);
+        //federal tax
+        double calFederal = calcFedralTax();
+        txtDfederalTax.setText("Federal Tax: \t" + calFederal);
+        // Provincial Tax
+        double calProvincial = calcProvincialTax();
+        txtDprovincialTax.setText("Provincial Tax:\t" + calProvincial);
+        // total tax paid
+        double taxpaid = calTaxPaid();
+        txtTaxPaid.setText("Total tax Paid:\t" + taxpaid);
+    }
 
 }
