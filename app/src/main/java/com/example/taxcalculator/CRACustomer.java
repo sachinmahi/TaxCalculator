@@ -46,7 +46,9 @@ public class CRACustomer implements Parcelable
         this.taxFillingDate = taxFillingDate;
         this.grossIncome = grossIncome;
         this.rrspContri = rrspContri;
+
     }
+    
 
     public double getGrossIncome() {
         return grossIncome;
