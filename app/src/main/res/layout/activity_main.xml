@@ -84,6 +84,15 @@ app:layout_constraintTop_toTopOf="parent">
         android:textColor="#E21616"
         android:textStyle="bold" />
 
+    <EditText
+        android:id="@+id/txtAge"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="Age"
+        android:inputType="number"
+        android:textStyle="bold" />
+
+
 
     <TextView
         android:layout_width="match_parent"
@@ -120,13 +129,6 @@ app:layout_constraintTop_toTopOf="parent">
     </RadioGroup>
 
 
-    <EditText
-        android:id="@+id/txtAge"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="Age"
-        android:inputType="number"
-        android:textStyle="bold" />
 
 
     <TextView
