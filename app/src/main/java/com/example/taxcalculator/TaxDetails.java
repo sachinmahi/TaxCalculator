@@ -25,6 +25,10 @@ public class TaxDetails extends AppCompatActivity {
     private TextView txtTaxableIncome;
     private TextView txtTaxPaid;
 
+    private double cpp = 0, ei = 0;  double rrsp = 0, rrspCf = 0, taxableIncome, federalTax,
+            provincialTax, totalTaxPaid;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
