@@ -7,10 +7,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class TaxDetails extends AppCompatActivity {
-
     CRACustomer calCRA;
     private TextView calculatedfullName;
     private TextView calSIN;
@@ -38,6 +38,7 @@ public class TaxDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tax_details);
+
 
         calculatedfullName = findViewById(R.id.txtCalFullName);
         calSIN =findViewById(R.id.edCalSinNumber);
@@ -72,9 +73,9 @@ public class TaxDetails extends AppCompatActivity {
         txtDgrossIncome.setText(" GROSS INCOME: \t" + calCRA.getGrossIncome());
         txtRRSPContribution.setText("RRSP Contributed: \t" + calCRA.getRrspContri());
         performLogic();
-
-
     }
+
+
     public void backButton()
     {
         ActionBar actionBar = getSupportActionBar();
@@ -82,6 +83,7 @@ public class TaxDetails extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
+
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -94,6 +96,7 @@ public class TaxDetails extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         return true;
     }
+
 
     public void performLogic()
     {
@@ -149,7 +152,6 @@ public class TaxDetails extends AppCompatActivity {
         }
         return cpp;
     }
-
     public double calcFedralTax() {
         //calculate federal tax
         double temp = taxableIncome;
@@ -174,8 +176,6 @@ public class TaxDetails extends AppCompatActivity {
         }
         return federalTax;
     }
-
-
     public  double calcProvincialTax(){
         //calculate provincial tax
         return provincialTax;
@@ -184,6 +184,5 @@ public class TaxDetails extends AppCompatActivity {
     {
         return totalTaxPaid;
     }
-
 
 }
