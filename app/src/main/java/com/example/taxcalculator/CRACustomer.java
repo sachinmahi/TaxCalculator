@@ -179,4 +179,32 @@ public class CRACustomer {
         return 0;
     }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(fName);
+        dest.writeString(lName);
+        dest.writeString(fullName);
+        dest.writeInt(sinNumber);
+        dest.writeInt(age);
+        dest.writeString(gender);
+        dest.writeString(dateOfBirth);
+        dest.writeString(taxFillingDate);
+        dest.writeDouble(grossIncome);
+        dest.writeDouble(rrspContri);
+
+    }
+    public CRACustomer(Parcel parcel)
+    {
+        fName = parcel.readString();
+        lName = parcel.readString();
+        fullName =parcel.readString();
+        sinNumber = parcel.readInt();
+        age = parcel.readInt();
+        gender = parcel.readString();
+        dateOfBirth = parcel.readString();
+        taxFillingDate = parcel.readString();
+        grossIncome = parcel.readDouble();
+        rrspContri = parcel.readDouble();
+    }
+
 }
