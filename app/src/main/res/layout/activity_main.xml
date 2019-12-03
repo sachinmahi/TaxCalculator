@@ -129,14 +129,13 @@ app:layout_constraintTop_toTopOf="parent">
     </RadioGroup>
 
 
-
-
     <TextView
         android:id="@+id/txtFillingDate"
         android:layout_width="match_parent"
         android:layout_height="32dp"
         android:hint="TaxFillingDate"
         android:inputType="date"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 
